@@ -1,0 +1,26 @@
+import Featured from "./Featured"
+import i from '../../public/headimg.png'
+
+
+const Body = ()=>{
+    return(
+        <>
+        <div className="bg-black">
+            <div className=" h-[500px] mb-6 bg-center bg-cover bg-no-repeat"
+                style={{backgroundImage : `url(${i})`}}>
+                <div className="flex justify-center items-center w-full h-[500px] bg-black/20">
+                    <div>
+                        <h1 className="text-3xl md:text-5xl font-medium text-white">Discover Your Prefect Brew</h1>
+                        <div className="text-center">
+                            <button className="m-4 p-4 bg-[#2D2D2D] text-white">Browse products</button>
+                            <button className="m-4 p-4 bg-white ">Shop Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         <Featured/>
+        </div>
+        </>
+    )
+}
+export default Body
