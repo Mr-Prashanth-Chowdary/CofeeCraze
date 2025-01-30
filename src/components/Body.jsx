@@ -1,5 +1,6 @@
 import Featured from "./Featured"
 import i from '../../public/headimg.png'
+import { Link } from "react-router-dom"
 
 
 const Body = ()=>{
@@ -13,7 +14,7 @@ const Body = ()=>{
                         <h1 className="text-3xl md:text-5xl font-medium text-white">Discover Your Prefect Brew</h1>
                         <div className="text-center">
                             <button className="m-4 p-4 bg-[#2D2D2D] text-white">Browse products</button>
-                            <button className="m-4 p-4 bg-white ">Shop Now</button>
+                           <Link to='/shop'> <button className="m-4 p-4 bg-white ">Shop Now</button></Link>
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,7 @@
 import { useState } from "react"
 import Smenu from "./Smenu"
+import { Link } from "react-router-dom"
+
 
 const Navbar = () =>{
     const [isMenu,setIsMenu] = useState(false)
@@ -15,8 +17,8 @@ const Navbar = () =>{
                <button onClick={()=>{setIsMenu(!isMenu)}}>menu</button>
             </div>
             <ul className="hidden md:flex gap-3">
-                <li>Home</li>
-                <li>Shop</li>
+               <Link to='/'> <li>Home</li></Link>
+               <Link to='/shop'><li>Shop</li></Link>
                 <li>Cart</li>
                 <li>Checkout</li>
             </ul>
