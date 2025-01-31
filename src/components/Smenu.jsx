@@ -9,7 +9,7 @@ const Smenu = ()=>{
                <Link to='/'><li>Home</li></Link> 
                <Link to='/shop'><li>Shop</li></Link> 
                 <li>Cart</li>
-                <li>Checkout</li>
+                <Link to='/checkout'><li>Checkout</li></Link> 
             </ul>
         </div>
         </>
