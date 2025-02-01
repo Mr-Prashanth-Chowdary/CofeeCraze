@@ -19,12 +19,12 @@ const Navbar = () =>{
             <ul className="hidden md:flex gap-3">
                <Link to='/'> <li>Home</li></Link>
                <Link to='/shop'><li>Shop</li></Link>
-               <li>Cart</li>
+               <Link to='/cart'><li>Cart</li></Link>
                <Link to='/checkout'><li>Checkout</li></Link> 
             </ul>
         </div>
         {
-            isMenu ? <Smenu/> :""
+            isMenu && <Smenu/>
         }
         </>
     )

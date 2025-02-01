@@ -8,8 +8,8 @@ const Smenu = ()=>{
             <ul>
                <Link to='/'><li>Home</li></Link> 
                <Link to='/shop'><li>Shop</li></Link> 
-                <li>Cart</li>
-                <Link to='/checkout'><li>Checkout</li></Link> 
+               <Link to='/cart'><li>Cart</li></Link> 
+               <Link to='/checkout'><li>Checkout</li></Link> 
             </ul>
         </div>
         </>
