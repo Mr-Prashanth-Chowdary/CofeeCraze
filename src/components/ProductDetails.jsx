@@ -5,6 +5,13 @@ const ProductDetails = () =>{
     const {productId} = useParams()
     const product = data.Featured.find((coffee_obj)=> coffee_obj.id.toString() === productId)
     console.log(product)
+
+    // const isAddtoCart = cart.some((obj)=> obj._id == product.id);
+    // const handleCartBtn = (id,name,img,price,size)=>{
+    //     Cart.AddtoCart({_id:id,name:name,img:img,price:price,size:size})
+    // }
+    // console.log(cart)
+    console.log(isAddtoCart)
     return(
         <>
         <div className='bg-black text-white min-h-screen p-6 flex flex-col md:flex-row justify-between'>
@@ -14,7 +21,10 @@ const ProductDetails = () =>{
             <p>{product.about}</p>
             <p>${product.price}</p>
             <label htmlFor="quantity">Quantity</label><input id="quantity" type="number" /><br />
-            <button className='text-center w-full'>Add to Cart</button>
+            {isAddtoCart ? 
+            <button className='text-center w-full text-lg'>Buy Now</button>:
+            <button className='text-center w-full text-lg' >Add to Cart</button>
+            }
         </div>
         <div className='w-full md:w-[32%]'>
             <h1 className='font-bold text-xl mb-2'>Related Products</h1>

@@ -54,5 +54,4 @@ const data = {
 };
 
 
-const cart = []
-export { data, cart }; 
+export { data}; 
