@@ -1,14 +1,29 @@
-import { useState } from "react";
-import { data, cart } from "./config/staticData";
+import { useEffect, useState } from "react";
+import { data } from "./config/staticData";
 
 const Shop = () => {
   const [searchText, setSearchText] = useState("");
   const [isSearch, setIsSearch] = useState(false);
+  const [cart, setCart] = useState(() => {
+    const locData = localStorage.getItem("cart");
+    return locData ? JSON.parse(locData) : [];
+  });
+  console.log(cart);
 
- const searchData = data.Featured.filter((obj) =>
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  const handleAddtoCart = (id, img, name, size, price) => {
+    let newItem = { id: id, img: img, name: name, size: size, price: price };
+    setCart((prev) => [...prev, newItem]);
+  };
+
+  const searchData = data.Featured.filter((obj) =>
     obj.name.toLowerCase().includes(searchText.trim().toLowerCase())
   );
   console.log(searchData);
+
   return (
     <>
       <div className="p-6 min-h-screen bg-black text-white">
@@ -18,7 +33,7 @@ const Shop = () => {
               value={searchText}
               onChange={(e) => {
                 setSearchText(e.target.value);
-                setIsSearch(false)
+                setIsSearch(false);
               }}
               type="text"
               name="search"
@@ -26,7 +41,10 @@ const Shop = () => {
               className=" border-1 border-[#2D2D2D] mr-2 py-1 px-6 placeholder-blue-200/20 "
               placeholder="Search Coffee.."
             />
-            <button className=" cursor-pointer px-7 py-1 text-white bg-[#2D2D2D]" onClick={()=>setIsSearch(true)}>
+            <button
+              className=" cursor-pointer px-7 py-1 text-white bg-[#2D2D2D]"
+              onClick={() => setIsSearch(true)}
+            >
               Search
             </button>
           </div>
@@ -57,12 +75,28 @@ const Shop = () => {
                     <p className="text-sm md:text-lg">{product.name}</p>
                     <p className="text-xs md:text-sm">{product.about}</p>
                     <p className="text-xs md:text-sm">${product.price}</p>
-                    <button
+                    
+                    {cart.some((itm) => itm.id === product.id) ? (
+                        <button  className="text-center w-full">
+                        Buy Now
+                      </button>
+                     
+                    ) : (
+                      <button
                       className="text-center w-full"
-                      onClick={() => handleAddtoCart(i)}
+                      onClick={() =>
+                        handleAddtoCart(
+                          product.id,
+                          product.img,
+                          product.name,
+                          product.size,
+                          product.price
+                        )
+                      }
                     >
-                      Add to Cart
+                    {" "}
                     </button>
+                    )}
                   </div>
                 );
               })
@@ -76,12 +110,29 @@ const Shop = () => {
                     <p className="text-sm md:text-lg">{product.name}</p>
                     <p className="text-xs md:text-sm">{product.about}</p>
                     <p className="text-xs md:text-sm">${product.price}</p>
-                    <button
+
+                    {cart.some((itm) => itm.id === product.id) ? (
+                       <button  className="text-center w-full">
+                       Buy Now
+                     </button>
+                      
+                    ) : (
+                      <button
                       className="text-center w-full"
-                      onClick={() => handleAddtoCart(i)}
+                      onClick={() =>
+                        handleAddtoCart(
+                          product.id,
+                          product.img,
+                          product.name,
+                          product.size,
+                          product.price
+                        )
+                      }
                     >
-                      Add to Cart
+                    {" "}
+                    Add to Cart
                     </button>
+                    )}
                   </div>
                 );
               })}
