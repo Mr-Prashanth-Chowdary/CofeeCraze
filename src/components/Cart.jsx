@@ -1,16 +1,25 @@
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
 
 const Cart = () => {
-  const [cartData,setCartData] = useState([{}])
+  const [cartData,setCartData] = useState(()=>{
+    const locData = localStorage.getItem('cart')
+    return locData ? JSON.parse(locData) : []
+  })
+  useEffect(()=>{
+    localStorage.setItem('cart',JSON.stringify(cartData))
+  },[cartData]);
+  const handleRemove = (id)=>{
+    const newData = cartData.filter((item)=> item.id !== id)
+    setCartData(newData)
+  
+  }
   return (
     <>
     <div className="bg-black text-white p-6 min-h-[85vh]">
       <h1 className="text-2xl font-bold mb-2">Your Cart</h1>
       {cartData.map((product)=>{
-        {console.log(product._id)}
         return(
-        <div key={product._id} className="flex justify-between bg-[#2D2D2D] mb-4">
+        <div key={product.id} className="flex justify-between bg-[#2D2D2D] mb-4">
          <div className="flex items-center p-6">
            <img
              className="w-[100px] h-[100px]"
@@ -29,7 +38,7 @@ const Cart = () => {
              <p>1</p>
              <button>-</button>
              </div>
-             <button onClick={()=>handleRemove(product.item.id)}>Remove</button>
+             <button onClick={()=>handleRemove(product.id)}>Remove</button>
          </div>
        </div>
       )})}
