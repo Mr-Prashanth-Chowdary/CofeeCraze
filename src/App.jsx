@@ -6,6 +6,7 @@ import Shop from './components/Shop'
 import ProductDetails from './components/ProductDetails'
 import Checkout from './components/Checkout'
 import Cart from './components/Cart'
+import BuyItemCP from './contextAPI/BuyItemCP'
 
 
 function App() {
@@ -17,9 +18,9 @@ function App() {
     <Routes>
     <Route path='/' element={<Body/>}/>
     <Route path='/shop' element={<Shop/>}/>
-    <Route path='/product/:productId' element={<ProductDetails/>}/>
-    <Route path='/checkout' element={<Checkout/>}/>
-    <Route path='/cart' element={<Cart/>}/>
+    <Route path='/product/:productId' element={<BuyItemCP><ProductDetails/></BuyItemCP>}/>
+    <Route path='/cart' element={<BuyItemCP><Cart/></BuyItemCP>}/>
+    <Route path='/checkout' element={<BuyItemCP><Checkout/></BuyItemCP>}/>
     </Routes>
     <Footer/>
 

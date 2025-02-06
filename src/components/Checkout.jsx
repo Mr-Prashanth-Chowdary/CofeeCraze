@@ -1,4 +1,9 @@
+import { useContext } from "react";
+import BuyItemContext from "../contextAPI/BuyItem";
+
 const Checkout = () => {
+  const {buyItem} = useContext(BuyItemContext)
+  const SubTotal = buyItem?.reduce((arr,curr)=>arr+curr.price,0) || 0
   return (
     <>
       <div className=" flex flex-col md:flex-row gap-6 text-white bg-black p-6">
@@ -60,17 +65,19 @@ const Checkout = () => {
         </div>
         <div className="w-full flex flex-col gap-4 md:h-[70vh] md:w-1/2 bg-[#2D2D2D] p-6">
         <h2>Order Summary</h2>
-        <div className="flex justify-between ">
-          <p>Colombian Coffee Beans x 1</p>
-          <p>$15.00</p>
-        </div>
-        <div className="flex justify-between ">
-          <p>Ethiopian Espresso x 2</p>
-          <p>$30.00</p>
-        </div>
+        {buyItem ? 
+        <>
+        {buyItem.map((item)=>{
+          return(
+            <div key={item.id} className="flex justify-between ">
+            <p>{item.name}</p>
+            <p>${item.price}</p>
+            </div>
+          )
+        })}
         <div className="flex justify-between font-bold text-lg ">
           <p>SubTotal</p>
-          <p>$45.00</p>
+          <p>${SubTotal}</p>
         </div>
         <div className="flex justify-between ">
           <p>Shipping</p>
@@ -80,11 +87,13 @@ const Checkout = () => {
         </div>
         <div className="flex justify-between  font-bold text-lg">
           <p>Total</p>
-          <p>$50.00</p>
+          <p>${SubTotal+5}</p>
         </div>
         <div className="m-4 flex h-full items-end">
         <button className="text-center bg-amber-300 w-full ">Buy</button>
         </div>
+        </>:
+        <h1>no items</h1>}
       </div>
       </div>
     </>

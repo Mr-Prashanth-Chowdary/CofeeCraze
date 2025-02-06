@@ -1,6 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import BuyItemContext from "../contextAPI/BuyItem";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
+  const {setBuyItem} = useContext(BuyItemContext)
   const [cartData,setCartData] = useState(()=>{
     const locData = localStorage.getItem('cart')
     return locData ? JSON.parse(locData) : []
@@ -12,6 +15,11 @@ const Cart = () => {
     const newData = cartData.filter((item)=> item.id !== id)
     setCartData(newData)
   
+  }
+  const navgate = useNavigate()
+  const handleCheckout = ()=>{
+    setBuyItem(cartData)
+    navgate('/checkout')
   }
   return (
     <>
@@ -44,7 +52,7 @@ const Cart = () => {
       )})}
       <div className="flex justify-between mt-4">
         <p className="font-bold">Total : $ {cartData.reduce((acc,curr)=>{return acc+curr.price},0)}</p>
-        <button>Proceed to Checkout</button>
+        <button onClick={handleCheckout}>Proceed to Checkout</button>
       </div>
     </div>
     </>
