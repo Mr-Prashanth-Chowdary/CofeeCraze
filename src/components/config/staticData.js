@@ -1,4 +1,3 @@
-
 const data = {
     Featured: [
         {
@@ -52,6 +51,4 @@ const data = {
         },
     ]
 };
-
-
 export { data}; 
