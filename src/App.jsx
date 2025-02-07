@@ -14,16 +14,18 @@ function App() {
   return (
     <>
     <Router>
+
     <Navbar/>
+    <BuyItemCP>
     <Routes>
     <Route path='/' element={<Body/>}/>
     <Route path='/shop' element={<Shop/>}/>
-    <Route path='/product/:productId' element={<BuyItemCP><ProductDetails/></BuyItemCP>}/>
-    <Route path='/cart' element={<BuyItemCP><Cart/></BuyItemCP>}/>
-    <Route path='/checkout' element={<BuyItemCP><Checkout/></BuyItemCP>}/>
+    <Route path='/product/:productId' element={<ProductDetails/>}/>
+    <Route path='/cart' element={<Cart/>}/>
+    <Route path='/checkout' element={<Checkout/>}/>
     </Routes>
+    </BuyItemCP>
     <Footer/>
-
     </Router>
     </>
   )

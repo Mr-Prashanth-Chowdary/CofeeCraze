@@ -1,15 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { data } from "./config/staticData";
+import BuyItemContext from "../contextAPI/BuyItem";
+import { useNavigate } from "react-router-dom";
 
 const Shop = () => {
+  const {setBuyItem} = useContext(BuyItemContext)
   const [searchText, setSearchText] = useState("");
   const [isSearch, setIsSearch] = useState(false);
   const [cart, setCart] = useState(() => {
     const locData = localStorage.getItem("cart");
     return locData ? JSON.parse(locData) : [];
   });
-  console.log(cart);
-
+  const navigation = useNavigate()
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
@@ -18,6 +20,12 @@ const Shop = () => {
     let newItem = { id: id, img: img, name: name, size: size, price: price,Quantity:1};
     setCart((prev) => [...prev, newItem]);
   };
+
+  const handleBuyNow  = (id, img, name, size, price)=>{
+    let buyItem = { id: id, img: img, name: name, size: size, price: price,Quantity:1};
+    setBuyItem([buyItem])
+    navigation('/checkout')
+  }
 
   const Data = isSearch
   ? data.Featured.filter((obj) =>
@@ -73,7 +81,11 @@ const Shop = () => {
                     <p className="text-xs md:text-sm">${product.price}</p>
                     
                     {cart.some((itm) => itm.id === product.id) ? (
-                        <button  className="text-center w-full">
+                        <button  className="text-center w-full" onClick={()=>handleBuyNow(product.id,
+                          product.img,
+                          product.name,
+                          product.size,
+                          product.price)}>
                         Buy Now
                       </button>
                      
