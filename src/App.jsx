@@ -7,7 +7,7 @@ import ProductDetails from './components/ProductDetails'
 import Checkout from './components/Checkout'
 import Cart from './components/Cart'
 import BuyItemCP from './contextAPI/BuyItemCP'
-
+import Login from './components/pages/login'
 
 function App() {
 
@@ -26,6 +26,7 @@ function App() {
     </Routes>
     </BuyItemCP>
     <Footer/>
+    <Login/>
     </Router>
     </>
   )
