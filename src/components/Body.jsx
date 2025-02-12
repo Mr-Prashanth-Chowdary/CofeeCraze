@@ -1,5 +1,5 @@
 import Featured from "./Featured"
-import i from '../../public/headimg.png'
+import i from '/headimg.png'
 import { Link } from "react-router-dom"
 
 
