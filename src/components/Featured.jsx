@@ -5,7 +5,7 @@ const Featured = ()=>{
     return(
         <>
         <div className="mx-6">
-        <h1 className="text-white">Featured</h1>
+        <h1 className="text-white text-2xl">Featured</h1>
         <div className="py-4 flex flex-wrap gap-3 text-white">
             {
                 data.Featured.map((product)=>{

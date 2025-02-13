@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { data } from "./config/staticData";
 import { useContext, useState } from "react";
 import BuyItemContext from "../contextAPI/BuyItem";
+import Auth from "../contextAPI/Auth";
 
 
 const ProductDetails = () => {
@@ -12,6 +13,7 @@ const ProductDetails = () => {
   });
   const navgate = useNavigate()
   const {buyItem,setBuyItem} = useContext(BuyItemContext)
+  const {isLoggedIn} = useContext(Auth)
   console.log(buyItem)
   const { productId } = useParams();
   const product = data.Featured.find(
@@ -25,6 +27,11 @@ const ProductDetails = () => {
   }
 
   const handleBuynow = (id,img,name,size,price,quantity)=>{
+    console.log(isLoggedIn)
+    if(!isLoggedIn){
+      navgate('/login')
+      return
+    }
     const item = {id:id,img:img,name:name,size:size,price:price,quantity:quantity}
     setBuyItem([item])
     navgate('/checkout')
