@@ -1,4 +1,5 @@
 import Featured from "./Featured"
+import Readings from "./Readings"
 import i from '/headimg.png'
 import { Link } from "react-router-dom"
 
@@ -20,6 +21,7 @@ const Body = ()=>{
                 </div>
             </div>
          <Featured/>
+         <Readings/>
         </div>
         </>
     )
