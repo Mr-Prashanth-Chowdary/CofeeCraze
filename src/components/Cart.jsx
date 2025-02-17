@@ -1,9 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import BuyItemContext from "../contextAPI/BuyItem";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
+import Auth from "../contextAPI/Auth";
 
 const Cart = () => {
   const { setBuyItem } = useContext(BuyItemContext);
+  const {isLoggedIn} = useContext(Auth)
   const [errMsg, setErrMsg] = useState(null);
   const [cartData, setCartData] = useState(() => {
     const locData = localStorage.getItem("cart");
@@ -17,15 +20,39 @@ const Cart = () => {
       },3000)
     }
   },[errMsg])
-
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartData));
-  }, [cartData]);
+  
+    if (isLoggedIn) {
+      const saveToDb = async () => {
+        const token = localStorage.getItem('token');
+        if (!token) return;
+  
+        const headers = {
+          headers: { Authorization: `Bearer ${token}` }
+        };
+  
+        try {
+          const addTodb = await axios.post("http://localhost:3001/api/cart", cartData, headers);
+        } catch (error) {
+          console.error("Error saving to DB:", error);
+        }
+      };
+  
+      saveToDb();
+    }
+  }, [cartData, isLoggedIn]);
+  
+
   const handleRemove = (id) => {
     const newData = cartData.filter((item) => item.id !== id);
     setCartData(newData);
   };
+
+
   const navgate = useNavigate();
+
+
   const handleCheckout = () => {
     if (cartData.length === 0) {
       setErrMsg("No Products to Checkout");
@@ -34,6 +61,8 @@ const Cart = () => {
     setBuyItem(cartData);
     navgate("/checkout");
   };
+
+
   return (
     <>
       <div className="bg-black text-white p-6 min-h-[85vh]">
