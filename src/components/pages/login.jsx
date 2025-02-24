@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Signup from "./Signup";
 import Auth from "../../contextAPI/Auth";
+import baseURL from "../config/baseURL";
 
 export default function Login() {
   const [view, setView] = useState("Login");
@@ -17,20 +18,20 @@ export default function Login() {
     e.preventDefault();
     try {
       const user = {
-        username: email,
+        email: email,
         password: password,
       };
 
       const reqRes = await axios.post(
-        "http://localhost:3001/api/auth/login",
-        user
-      ); // need to change the url it should not be fixed
+        `${baseURL}/api/auth/login`,
+        user,
+      ); 
       console.log(reqRes.data);
 
       const token = reqRes.data.token;
       if (token) {
         login(token)
-        navigate("/shop");
+        navigate("/");
       }
     } catch (error) {
       console.error("Login failed:", error.response?.data || error.message);

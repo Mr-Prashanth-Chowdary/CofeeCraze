@@ -1,5 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url(https://db.onlinewebfonts.com/c/e956a479fdb7957b5e54aa49291bbc94?family=Zapf+Humanist+601+W03+Ul);
+
 @import "tailwindcss";
-html, body {
-    scroll-behavior: smooth;
-    overscroll-behavior: none;
+
+html {
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
 }
+
+body {
+  overflow-x: hidden;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+/* root-txt codes */
+.typo1{
+  font-family: "Cormorant Garamond", serif;
+}
+
+/* landing-page */
+.title{
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.intro-sec2{
+    font-family: "Zapf Humanist", serif;
+}
+
+.OFO-discreption,.OFO-Heading{
+  font-family: "Zapf Humanist", serif;
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+.shimmer-animate {
+  background: linear-gradient(to right, #f0f0f0 4%, #e0e0e0 25%, #f0f0f0 36%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite linear;
+}
+
+

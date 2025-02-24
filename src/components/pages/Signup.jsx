@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import baseURL from "../config/baseURL";
 
 export default function Signup() {
     const [username,setUsername] = useState('')
@@ -16,7 +17,7 @@ export default function Signup() {
             username:username
         }
         try{
-            const reqRes  = await axios.post("http://localhost:3001/api/auth/signup",user)
+            const reqRes  = await axios.post(`${baseURL}/api/auth/signup`,user)
             console.log(reqRes.data)
             window.location.reload()
             setUsername('')
