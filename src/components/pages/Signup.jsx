@@ -18,7 +18,7 @@ export default function Signup() {
         }
         try{
             const reqRes  = await axios.post(`${baseURL}/api/auth/signup`,user)
-            console.log(reqRes.data)
+            // console.log(reqRes.data)
             window.location.reload()
             setUsername('')
             setEmail('')

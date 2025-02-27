@@ -22,7 +22,7 @@ function AuthProvider({ children }) {
             const responseInterceptor = axios.interceptors.response.use(
                 (response) => response,
                 async (error) => {
-                    console.log('this is responseInterceptor', error.response)
+                    // console.log('this is responseInterceptor', error.response)
                     if (error.response?.status === 401) {
                         try {
                             // Refresh token request
@@ -61,7 +61,7 @@ function AuthProvider({ children }) {
     const login = (token) => {
         localStorage.setItem('token', token);
         const decodedToken = jwtDecode(token);
-        console.log(decodedToken)
+        // console.log(decodedToken)
         setUserRole(decodedToken.role);
         setIsLoggedIn(true);
     };

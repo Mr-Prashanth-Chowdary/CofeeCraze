@@ -14,7 +14,7 @@ export default function Collection() {
       try {
         const response = await axios.get(`${baseURL}/api/products`);
         setProducts(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       } catch (error) {
         console.error('Error fetching products', error);
       }
@@ -22,7 +22,6 @@ export default function Collection() {
     getItems();
   }, []);
 
-  // Sorting and filtering logic using product.quantity
   const filteredAndSortedProducts = [...products]
     .filter((product) => (filter === 'in-stock' ? product.quantity > 0 : true))
     .sort((a, b) => {
@@ -36,29 +35,28 @@ export default function Collection() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Sticky Navigation */}
-      <nav className="sticky top-0 bg-white/90 backdrop-blur-sm border-b border-gray-200 z-1">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <div className="w-full sm:w-auto">
-            <label className="text-sm font-medium text-gray-700 mr-2">Sort:</label>
+    <div className="min-h-screen bg-white">
+      {/* Navigation remains as before */}
+      <nav className="sticky top-0 bg-white/95 backdrop-blur-md border-b border-gray-100 z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+          <div className="flex items-center space-x-2">
+            <label className="text-sm text-gray-800">Sort:</label>
             <select
               value={sort}
               onChange={(e) => setSort(e.target.value)}
-              className="w-full sm:w-48 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm"
+              className="w-48 border border-gray-200 rounded px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-1 focus:ring-gray-300"
             >
               <option value="">Select</option>
               <option value="price-asc">Price: Low to High</option>
               <option value="price-desc">Price: High to Low</option>
             </select>
           </div>
-
-          <div className="w-full sm:w-auto">
-            <label className="text-sm font-medium text-gray-700 mr-2">Filter:</label>
+          <div className="flex items-center space-x-2">
+            <label className="text-sm text-gray-800">Filter:</label>
             <select
               value={filter}
               onChange={(e) => setFilter(e.target.value)}
-              className="w-full sm:w-48 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm"
+              className="w-48 border border-gray-200 rounded px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-1 focus:ring-gray-300"
             >
               <option value="">All</option>
               <option value="in-stock">In Stock</option>
@@ -67,36 +65,36 @@ export default function Collection() {
         </div>
       </nav>
 
-      {/* Responsive Product Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Product Grid */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
           {filteredAndSortedProducts.map((product) => (
             <Link to={`/s/${product._id}`} key={product._id}>
-              <div className="group relative bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200 ease-in-out">
-                <div className="aspect-square overflow-hidden rounded-t-xl bg-gray-100">
+              <div className="group relative bg-white rounded transition-transform duration-300 hover:scale-105 hover:shadow-md">
+                <div className="aspect-square overflow-hidden rounded-t bg-gray-50">
                   <img
                     src={product.image1}
                     alt={product.itemName}
                     loading="lazy"
-                    className={`w-full h-full object-cover transition-opacity duration-300 ${
+                    className={`w-full h-full object-cover transform scale-80 transition-all duration-300 ${
                       loadedImages[product._id] ? 'opacity-100' : 'opacity-0'
                     }`}
                     onLoad={() => handleImageLoad(product._id)}
                   />
                 </div>
-                <div className="p-4">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
                     {product.itemName}
                   </h3>
-                  <p className="text-sm text-gray-600 line-clamp-2 mb-3">
+                  <p className="text-sm text-gray-600 line-clamp-2 mb-4">
                     {product.description}
                   </p>
                   <div className="flex justify-between items-center">
-                    <span className="text-lg font-bold text-indigo-600">
+                    <span className="text-xl font-bold text-gray-900">
                       ₹{product.price.toFixed(2)}
                     </span>
                     {product.quantity <= 0 && (
-                      <span className="text-xs text-red-600 px-2 py-1 rounded-full bg-red-50">
+                      <span className="text-xs text-red-600 border border-red-600 px-2 py-1 rounded">
                         Out of Stock
                       </span>
                     )}

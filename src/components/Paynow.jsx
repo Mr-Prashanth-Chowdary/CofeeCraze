@@ -36,7 +36,7 @@ export default function Paynow({btnName,amount}) {
           body: JSON.stringify({ amount: amount, currency: "INR", receipt: "receipt#1", notes: {} }),
         })
           .then((res) => {
-            console.log(res)
+            // console.log(res)
             return res.json()})
           .catch((error) => {
             console.error("Error creating order:", error);
@@ -63,7 +63,7 @@ export default function Paynow({btnName,amount}) {
             color: "#F37254",
           },
           handler: function (response) {
-            console.log(response)
+            // console.log(response)
             fetch(`${baseURL}/api/pay/verify-payment`, {
                 method: "POST",
                 headers: {
@@ -78,15 +78,15 @@ export default function Paynow({btnName,amount}) {
               })
                 .then((res) => res.json()) // If this fails, backend is not returning JSON
                 .then((data) => {
-                  console.log("Verification Response:", data);
+                  // console.log("Verification Response:", data);
                   if (data.status === "ok") {
                     const params = new URLSearchParams({
                       amountPaid: data.paydata.amountPaid,
                       transactionId: data.paydata.paymentId,
                       date: data.paydata.date,
                     }).toString();
-                    // window.location.href = `http://localhost:5173/paymentsuccess?${params}`;
-                    window.location.href = `${baseURL}/paymentsuccess?${params}`;
+                    window.location.href = `http://localhost:5173/paymentsuccess?${params}`;
+                    // window.location.href = `${baseURL}/paymentsuccess?${params}`;
                   } else {
                     alert("Payment verification failed");
                   }

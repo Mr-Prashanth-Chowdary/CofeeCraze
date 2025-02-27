@@ -108,7 +108,8 @@ export default function Login() {
               >
                 {view === "Signup" ? "Login" : "Signup"}
               </button>
-              <button className="border-[1px] border-white px-6 py-1 rounded-lg  hover:bg-white hover:text-black">
+              <button className="border-[1px] border-white px-6 py-1 rounded-lg  hover:bg-white hover:text-black"
+              onClick={()=>window.location.href =`${baseURL}/api/auth/google`}>
                 Google
               </button>
             </div>

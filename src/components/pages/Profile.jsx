@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import Auth from '../../contextAPI/Auth';
 import axios from 'axios';
 import baseURL from '../config/baseURL';
+import ShimmerProfile from '../shimmerUI/Profile';
 
 export default function Profile() {
   const [orders, setOrders] = useState([]);
@@ -48,9 +49,7 @@ export default function Profile() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex justify-center items-center text-lg">
-        Loading...
-      </div>
+     <ShimmerProfile/>
     );
   }
 

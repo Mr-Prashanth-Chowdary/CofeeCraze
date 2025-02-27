@@ -87,13 +87,13 @@ const handleAddtoCart = async (id) => {
           },
         }
       );
-      console.log("Added to DB", response.data);
+      // console.log("Added to DB", response.data);
     } else {
       // If not logged in, save the id in local storage
       const localCart = JSON.parse(localStorage.getItem("localCart")) || [];
       localCart.push(id);
       localStorage.setItem("localCart", JSON.stringify(localCart));
-      console.log("Added to local cart", localCart);
+      // console.log("Added to local cart", localCart);
     }
     setIsAdded(true);
   } catch (error) {

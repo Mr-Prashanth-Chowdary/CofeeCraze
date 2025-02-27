@@ -1,5 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import React, { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Discovery() {
   const textRef = useRef(null);
@@ -110,7 +111,7 @@ export default function Discovery() {
             variants={buttonVariants}
             transition={{ delay: 0.5 }}
           >
-            <button className="group relative overflow-hidden px-8 py-3 border border-black transition-colors duration-300 ease-in-out hover:text-white">
+            <button className="group relative overflow-hidden px-8 py-3 border border-black transition-colors duration-300 ease-in-out hover:text-white" onClick={()=>window.location.href = '/aboutus'}>
               {/* The sliding background */}
               <span className="absolute left-0 top-0 h-full w-0 bg-black transition-all duration-300 ease-out group-hover:w-full"></span>
               {/* The button text */}

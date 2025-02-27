@@ -23,7 +23,7 @@ export default function AdminProfile() {
                 const allOrders = response.data;
 
                 // Filter based on order status
-                const yetToBeShipped = allOrders.filter(order => order.orderStatus === 'yet_to_be_shipped');
+                const yetToBeShipped = allOrders.filter(order => order.orderStatus === 'yet_to_be_Shipped');
                 const shipped = allOrders.filter(order => order.orderStatus === 'shipped');
 
                 setYetToBeShippedOrders(yetToBeShipped);
@@ -74,7 +74,7 @@ export default function AdminProfile() {
 
     if (loading) {
         return (
-            <div className="min-h-screen flex justify-center items-center text-lg">
+            <div className="min-h-screen flex justify-center items-center text-lg text-gray-700">
                 Loading...
             </div>
         );
@@ -82,7 +82,7 @@ export default function AdminProfile() {
 
     if (error) {
         return (
-            <div className="min-h-screen flex justify-center items-center text-lg">
+            <div className="min-h-screen flex justify-center items-center text-lg text-gray-700">
                 Error: {error.message}
             </div>
         );
@@ -92,9 +92,9 @@ export default function AdminProfile() {
         <div className="w-11/12 mx-auto my-10 py-8">
             {/* Header */}
             <header className="flex flex-col md:flex-row justify-between items-center mb-8">
-                <h1 className="text-2xl font-bold mb-4 md:mb-0">Admin Dashboard</h1>
+                <h1 className="text-2xl font-bold text-gray-900 mb-4 md:mb-0">Admin Dashboard</h1>
                 <button
-                    className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition"
+                    className="px-4 py-2 bg-black text-white rounded hover:bg-gray-800 transition"
                     onClick={logout}
                 >
                     Logout
@@ -104,8 +104,10 @@ export default function AdminProfile() {
             {/* Tabs for filtering orders */}
             <div className="mb-6">
                 <button
-                    className={`px-4 py-2 rounded-lg mr-4 ${
-                        activeTab === 'yet_to_be_shipped' ? 'bg-blue-500 text-white' : 'bg-gray-200'
+                    className={`px-4 py-2 rounded-lg mr-4 text-sm font-medium ${
+                        activeTab === 'yet_to_be_shipped'
+                            ? 'bg-black text-white'
+                            : 'bg-white text-gray-700 border border-gray-300'
                     }`}
                     onClick={() => setActiveTab('yet_to_be_shipped')}
                 >
@@ -113,8 +115,10 @@ export default function AdminProfile() {
                 </button>
 
                 <button
-                    className={`px-4 py-2 rounded-lg ${
-                        activeTab === 'shipped' ? 'bg-blue-500 text-white' : 'bg-gray-200'
+                    className={`px-4 py-2 rounded-lg text-sm font-medium ${
+                        activeTab === 'shipped'
+                            ? 'bg-black text-white'
+                            : 'bg-white text-gray-700 border border-gray-300'
                     }`}
                     onClick={() => setActiveTab('shipped')}
                 >
@@ -124,7 +128,7 @@ export default function AdminProfile() {
 
             {/* Order Table Based on Active Tab */}
             <section className="bg-white shadow rounded-lg p-6 overflow-x-auto">
-                <h2 className="text-xl font-semibold mb-4">
+                <h2 className="text-xl font-semibold text-gray-900 mb-4">
                     {activeTab === 'yet_to_be_shipped' ? 'Yet to be Shipped Orders' : 'Shipped Orders'}
                 </h2>
 
@@ -132,13 +136,13 @@ export default function AdminProfile() {
                     <table className="min-w-full divide-y divide-gray-200">
                         <thead className="bg-gray-50">
                             <tr>
-                                <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">Order ID</th>
-                                <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">User Name</th>
-                                <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">User Email</th>
-                                <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">Amount Paid</th>
-                                <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">Order Status</th>
+                                <th className="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase">Order ID</th>
+                                <th className="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase">User Name</th>
+                                <th className="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase">User Email</th>
+                                <th className="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase">Amount Paid</th>
+                                <th className="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase">Order Status</th>
                                 {activeTab === 'yet_to_be_shipped' && (
-                                    <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">Action</th>
+                                    <th className="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase">Action</th>
                                 )}
                             </tr>
                         </thead>
@@ -161,7 +165,7 @@ export default function AdminProfile() {
                                         {activeTab === 'yet_to_be_shipped' && (
                                             <td className="px-6 py-4 whitespace-nowrap">
                                                 <button
-                                                    className="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600 transition"
+                                                    className="px-3 py-1 bg-black text-white rounded hover:bg-gray-800 transition"
                                                     onClick={() => markAsShipped(order.orderId)}
                                                 >
                                                     Mark as Shipped

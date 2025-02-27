@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Auth from "../../contextAPI/Auth";
 import axios from "axios";
+import baseURL from "../config/baseURL";
 
 export default function Profile() {
   const { logout } = useContext(Auth);
@@ -10,7 +11,7 @@ export default function Profile() {
   useEffect(() => {
     const fetchOrder = async () => {
       try {
-        const { data } = await axios.get("http://localhost:3001/api/user/orders", {
+        const { data } = await axios.get(`${baseURL}/api/user/orders`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },

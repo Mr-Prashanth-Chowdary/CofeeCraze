@@ -3,10 +3,19 @@ import FlavSection from "../FlavSection";
 import TwoCards from "../TwoCards";
 import Discovery from "../Discovery";
 import ShortStore from "../ShortStore";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Landingpage() {
-  
+  const navigate = useNavigate()
+  const urlParams = new URLSearchParams(window.location.search);
+  const token = urlParams.get("token");
+  if(token){
+    localStorage.setItem('token',token)
+    const url = new URL(window.location);
+    url.searchParams.delete("token");
+    window.history.replaceState({}, document.title, url);
+  }
   return (
     <>
       <div className="w-full h-[85vh] relative">
@@ -24,7 +33,7 @@ export default function Landingpage() {
         <div className="absolute z-1 top-[45%] left-1/2 transform -translate-y-1/2 -translate-x-1/2 text-white">
             <h1 className="title text-4xl  font-bold w-[250px] text-center">A decade of Modern Coffee.</h1>
             <p className="text-[9px] text-center mt-5 mb-2">Welcome to world of brew</p>
-            <center><button className="text-xs text-black bg-white px-5 py-2 rounded-full shadow-lg shadow-black">Explore your Taste</button></center>
+            <center><button className="text-xs text-black bg-white px-5 py-2 rounded-full shadow-lg shadow-black cursor-pointer" onClick={()=>navigate('/collection')}>Explore your Taste</button></center>
         </div>
       </div>
       {/* new section start here */}
