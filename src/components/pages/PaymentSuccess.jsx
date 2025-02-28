@@ -45,7 +45,7 @@ export default function PaymentSuccess() {
                 </div>
                 <div className="grid grid-cols-2">
                     <span className="text-gray-600">Date:</span>
-                    <span className="text-gray-900 font-medium text-right">{new Date(Number(date)).toLocaleDateString()}</span>
+                    <span className="text-gray-900 font-medium text-right">{new Date(Number(date*1000)).toDateString()}</span>
                 </div>
             </div>
 

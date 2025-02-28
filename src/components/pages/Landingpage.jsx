@@ -1,17 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import FlavSection from "../FlavSection";
 import TwoCards from "../TwoCards";
 import Discovery from "../Discovery";
 import ShortStore from "../ShortStore";
 import { useNavigate } from "react-router-dom";
-
+import Auth from '../../contextAPI/Auth'
 
 export default function Landingpage() {
+  const {login} = useContext(Auth)
   const navigate = useNavigate()
   const urlParams = new URLSearchParams(window.location.search);
   const token = urlParams.get("token");
   if(token){
-    localStorage.setItem('token',token)
+    login(token)
     const url = new URL(window.location);
     url.searchParams.delete("token");
     window.history.replaceState({}, document.title, url);
