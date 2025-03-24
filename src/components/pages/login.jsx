@@ -45,17 +45,17 @@ export default function Login() {
     <>
       <div
         className="text-white bg-cover"
-        style={{ backgroundImage: "url('/bgimg.png')" }}
+        style={{ backgroundImage: "url('/bgimg.webp')" }}
       >
         <div className="relative flex justify-center items-center min-w-full min-h-screen bg-black/20">
           <img
             className="md:hidden absolute top-[10%] w-[150px] h-[150px]"
-            src="/loginlogo.png"
+            src="/loginlogo.webp"
             alt="login logo"
           />
           <img
             className="hidden md:block w-[30%] h-[70vh] object-cover rounded-bl-2xl rounded-tl-2xl"
-            src="/login.jpg"
+            src="/login.webp"
             alt="login background"
           />
           <div className="w-full flex flex-col justify-center md:w-[40%] h-screen md:h-[70vh] pt-30 md:pt-10 bg-black/80 md:rounded-tr-2xl md:rounded-br-2xl">

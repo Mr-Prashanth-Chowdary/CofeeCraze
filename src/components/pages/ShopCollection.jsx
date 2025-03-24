@@ -169,7 +169,7 @@ const handleAddtoCart = async (id) => {
             {isAdded ? "Added" : "Add to Cart"}
             </button>
             <button className="flex-1 bg-gray-200 py-4 hover:bg-gray-300">
-              <Paynow btnName="Buy Now " amount={product.price}/>
+              <Paynow btnName="Buy Now " amount={product.price} productIds={[product._id]}/>
             </button>
           </div>
         </div>

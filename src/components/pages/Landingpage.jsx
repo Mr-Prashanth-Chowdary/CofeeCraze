@@ -26,6 +26,7 @@ export default function Landingpage() {
           muted
           playsInline
           loop
+          poster="/posterLanding.webp"
         >
           <source src="./vid.webm" type="video/webm" />
         </video>

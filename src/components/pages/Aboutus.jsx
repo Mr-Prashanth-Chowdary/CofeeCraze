@@ -76,6 +76,7 @@ const Aboutus = () => {
       muted
       playsInline
       loop
+      poster="/posterLanding.webp"
     >
       <source src="./vid.webm" type="video/webm" />
     </video>

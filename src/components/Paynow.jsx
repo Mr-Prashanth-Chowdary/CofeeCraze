@@ -1,7 +1,7 @@
 import React from 'react'
 import baseURL from './config/baseURL';
 
-export default function Paynow({btnName,amount}) {
+export default function Paynow({btnName,amount,productIds}) {
     const loadRazorpayScript = () => {
         return new Promise((resolve) => {
           const script = document.createElement("script");
@@ -33,7 +33,7 @@ export default function Paynow({btnName,amount}) {
             "Authorization": `Bearer ${token}`,
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ amount: amount, currency: "INR", receipt: "receipt#1", notes: {} }),
+          body: JSON.stringify({ productIds:productIds,amount: amount, currency: "INR", receipt: "receipt#1", notes: {} }),
         })
           .then((res) => {
             // console.log(res)
@@ -85,8 +85,8 @@ export default function Paynow({btnName,amount}) {
                       transactionId: data.paydata.paymentId,
                       date: data.paydata.date,
                     }).toString();
-                    window.location.href = `http://localhost:5173/paymentsuccess?${params}`;
-                    // window.location.href = `${baseURL}/paymentsuccess?${params}`;
+                    // window.location.href = `http://localhost:5173/paymentsuccess?${params}`;
+                    window.location.href = `${baseURL}/paymentsuccess?${params}`;
                   } else {
                     alert("Payment verification failed");
                   }

@@ -92,7 +92,7 @@ export default function CardGrid() {
 
               {/* Content Overlay */}
               <div className="absolute inset-0 bg-black/30 hover:bg-black/10 transition-all duration-300 p-4 flex flex-col justify-end">
-                <h3 className="text-white text-xl font-bold mb-2">{card.name}</h3>
+                <p className="text-white text-xl font-bold mb-2">{card.name}</p>
                 <p className="text-white/80 text-sm mb-4">
                   {card.label} {/* Fixed typo from lable to label */}
                 </p>

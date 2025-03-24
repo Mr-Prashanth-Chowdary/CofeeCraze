@@ -11,6 +11,10 @@ export default function CartCollection() {
   const [total, setTotal] = useState('0.00');
   const navigate = useNavigate();
 
+
+  //product ids 
+  const product_ids = cartItems.map((item)=> item.id)
+
   // Function to fetch the cart data from the backend
   const fetchCartData = async () => {
     setLoading(true);
@@ -173,7 +177,7 @@ export default function CartCollection() {
         <button 
           className="mt-4 bg-green-600 text-white w-full sm:w-auto px-8 py-3 rounded-lg hover:bg-green-700 transition-colors"
         >
-          <Paynow btnName="Checkout" amount={total} />
+          <Paynow btnName="Checkout" amount={total} productIds={product_ids} />
         </button>
       </div>
     </div>

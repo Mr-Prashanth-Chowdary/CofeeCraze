@@ -136,13 +136,13 @@ export default function AdminProfile() {
                     <table className="min-w-full divide-y divide-gray-200">
                         <thead className="bg-gray-50">
                             <tr>
-                                <th className="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase">Order ID</th>
-                                <th className="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase">User Name</th>
-                                <th className="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase">User Email</th>
-                                <th className="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase">Amount Paid</th>
-                                <th className="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase">Order Status</th>
+                                <th className="px-6 py-3 text-left text-sm font-medium text-gray-300 uppercase">Order ID</th>
+                                <th className="px-6 py-3 text-left text-sm font-medium text-gray-300 uppercase">User Name</th>
+                                <th className="px-6 py-3 text-left text-sm font-medium text-gray-300 uppercase">User Email</th>
+                                <th className="px-6 py-3 text-left text-sm font-medium text-gray-300 uppercase">Amount Paid</th>
+                                <th className="px-6 py-3 text-left text-sm font-medium text-gray-300 uppercase">Order Status</th>
                                 {activeTab === 'yet_to_be_shipped' && (
-                                    <th className="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase">Action</th>
+                                    <th className="px-6 py-3 text-left text-sm font-medium text-gray-300 uppercase">Action</th>
                                 )}
                             </tr>
                         </thead>
@@ -176,7 +176,7 @@ export default function AdminProfile() {
                                 ))
                             ) : (
                                 <tr>
-                                    <td colSpan={activeTab === 'yet_to_be_shipped' ? 6 : 5} className="px-6 py-4 text-center text-gray-500">
+                                    <td colSpan={activeTab === 'yet_to_be_shipped' ? 6 : 5} className="px-6 py-4 text-center text-gray-300">
                                         No {activeTab === 'yet_to_be_shipped' ? 'pending' : 'shipped'} orders available.
                                     </td>
                                 </tr>

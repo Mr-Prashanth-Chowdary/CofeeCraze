@@ -57,7 +57,7 @@ export default function Discovery() {
           variants={imageVariants}
         >
           <img
-            src="/ODO.jpg"
+            src="/ODO.webp"
             alt="Featured"
             className="w-[400px] h-[400px] object-cover rounded-lg shadow-xl"
           />

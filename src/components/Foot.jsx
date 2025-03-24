@@ -13,7 +13,7 @@ export default function Foot() {
               <div className="w-12 h-12 border-2 border-white/40 rounded-full flex items-center justify-center">
                 <span className="text-white font-bold text-2xl">R</span>
               </div>
-              <h3 className="text-xl font-semibold text-white">Royal Brews</h3>
+              <h2 className="text-xl font-semibold text-white">Royal Brews</h2>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
               Purveyors of exceptional coffee experiences since 1890. 
@@ -23,13 +23,15 @@ export default function Foot() {
 
           {/* Navigation */}
           <div className="space-y-4">
-            <h4 className="text-white font-medium mb-3">Navigation</h4>
+            <h3 className="text-white font-medium mb-3">Navigation</h3>
             <ul className="space-y-2.5">
               {['About us', 'Contact us', 'Support', 'Help'].map((item) => (
                 <li key={item}>
                   <a href="#" className="text-white/80 hover:text-white text-sm transition-all duration-300
-                    hover:underline underline-offset-4">
+                    hover:underline underline-offset-4"
+                    aria-label="Go to navigation menu">
                     {item}
+          
                   </a>
                 </li>
               ))}
@@ -38,7 +40,7 @@ export default function Foot() {
 
           {/* Contact */}
           <div className="space-y-4">
-            <h4 className="text-white font-medium mb-3">Contact</h4>
+            <h3 className="text-white font-medium mb-3">Contact</h3>
             <div className="space-y-2 text-sm text-gray-400">
               <p>+1 (555) 123-4567</p>
               <p>contact@royalbrews.com</p>
@@ -48,7 +50,7 @@ export default function Foot() {
 
           {/* Social Media */}
           <div className="space-y-4">
-            <h4 className="text-white font-medium mb-3">Follow Us</h4>
+            <h3 className="text-white font-medium mb-3">Follow Us</h3>
             <div className="flex gap-4">
               {['fbicn', 'inicn', 'yticn', 'xicn'].map((icon, index) => (
                 <a 
@@ -56,9 +58,10 @@ export default function Foot() {
                   href="#"
                   className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center
                     hover:bg-white/10 transition-all duration-300"
+                  aria-label="Goes to socials"
                 >
                   <img 
-                    src={`./${icon}.png`} 
+                    src={`./${icon}.webp`} 
                     alt="" 
                     className="w-5 h-5 invert brightness-0 hover:brightness-100 transition-all"
                   />
@@ -70,7 +73,7 @@ export default function Foot() {
 
         {/* Copyright Section */}
         <div className="pt-8 border-t border-white/10">
-          <p className="text-center text-sm text-gray-500">
+          <p className="text-center text-sm text-gray-200">
             © {new Date().getFullYear()} Royal Brews. All Rights Reserved.<br/>
             Crafted with ♥ by Prashanth Chowdary
           </p>

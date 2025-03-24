@@ -139,7 +139,7 @@ export default function Dashboard() {
                 ) : preview3 && num === 3 ? (
                   <img src={preview3} alt="Preview 3" className="h-full w-full object-cover rounded-lg" />
                 ) : (
-                  <div className="text-gray-500">
+                  <div className="text-gray-200">
                     <span className="block text-center">Click to upload image {num}</span>
                     <span className="block text-center text-sm">PNG, JPG, JPEG</span>
                   </div>

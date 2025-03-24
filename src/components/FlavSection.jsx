@@ -92,9 +92,9 @@ export default function FlavSection() {
             <div className="absolute bottom-0 left-0 right-0 p-6 text-white space-y-3">
               <div className="relative">
                 <div className="absolute -top-8 left-0 h-1 w-12 bg-amber-500 transition-all duration-300 group-hover:w-20" />
-                <h3 className="text-2xl font-bold uppercase tracking-wide mb-2">
+                <p className="text-2xl font-bold uppercase tracking-wide mb-2">
                   {obj.title}
-                </h3>
+                </p>
               </div>
               <p className="text-sm leading-snug line-clamp-1 opacity-90">
                 {obj.dis}
